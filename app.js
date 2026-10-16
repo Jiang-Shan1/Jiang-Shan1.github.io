@@ -1,12 +1,12 @@
 const projects = [
  {id:'grasp',title:'手势识别与工件抓取',category:'vision',label:'视觉交互',en:'GESTURE TO ACTION',description:'将手势交互与工件抓取连接起来，展示从人的动作输入到机器人执行的实验过程。',points:['手势输入与机器人动作的关联','工件抓取任务的实际执行']},
  {id:'gluing',title:'机器人涂胶项目',category:'engineering',label:'工程实践',en:'ROBOTIC APPLICATION',description:'面向涂胶任务的机器人应用实践，通过现场视频呈现设备运动与作业过程。',points:['机器人涂胶任务的执行流程','实际应用场景中的设备运行']},
+ {id:'cube',title:'Wuji Hand 强化学习旋转魔方',category:'dexterity',label:'灵巧操作',en:'RL CUBE REORIENTATION',description:'基于开源 wuji-mjlab 的 PPO 强化学习魔方姿态重定向任务，展示 Wuji Hand 在仿真环境中对魔方进行在手旋转与姿态调整。',points:['PPO 强化学习的魔方姿态重定向任务','仿真环境中的在手旋转与控制策略演示']},
  {id:'scope',title:'灵巧手示波器按键',category:'dexterity',label:'灵巧操作',en:'PRECISION MANIPULATION',description:'面向真实设备的按键操作，观察灵巧手与小尺寸目标之间的接触和动作执行。',points:['手指对按键目标的操作','真实设备上的精细交互过程']},
  {id:'competition',title:'中国机器人及人工智能大赛',category:'engineering',label:'工程实践',en:'COMPETITION PRACTICE',description:'第二十七届中国机器人及人工智能大赛相关项目演示，记录竞赛场景下的系统实践。',points:['竞赛项目的运行过程','系统在实际任务中的演示表现']},
  {id:'hamer',title:'HaMeR 模型手势识别',category:'vision',label:'视觉交互',en:'HAND POSE PERCEPTION',description:'基于 HaMeR 模型的手势识别实验，展示手部动作的视觉感知效果。',points:['模型对手部动作的识别表现','不同手势变化下的可视化结果']},
  {id:'wuji',title:'Wuji Hand 动作演示',category:'dexterity',label:'灵巧操作',en:'DEXTEROUS HAND',description:'记录 Wuji Hand 灵巧手的动作实验，展示手指姿态变化与动作执行。',points:['灵巧手的手指运动','不同动作状态下的姿态变化']},
  {id:'single',title:'单相机猜拳系统',category:'vision',label:'视觉交互',en:'SINGLE-CAMERA INTERACTION',description:'以猜拳为交互场景，展示单相机方案下的手势识别与系统响应。',points:['猜拳手势的视觉输入','单相机交互系统的运行效果']},
- {id:'cube',title:'Wuji Hand 强化学习旋转魔方',category:'dexterity',label:'灵巧操作',en:'RL CUBE REORIENTATION',description:'基于开源 wuji-mjlab 的 PPO 强化学习魔方姿态重定向任务，展示 Wuji Hand 在仿真环境中对魔方进行在手旋转与姿态调整。',points:['PPO 强化学习的魔方姿态重定向任务','仿真环境中的在手旋转与控制策略演示']},
 ];
 const grid=document.querySelector('#project-grid');
 grid.innerHTML=projects.map((p,i)=>`<article class="project" data-category="${p.category}"><button class="project-media" data-project="${p.id}" aria-label="播放${p.title}演示"><img loading="lazy" src="assets/${p.id}.jpg" alt="${p.title}实验视频封面" width="800" height="500"><span class="play-small" aria-hidden="true">▶</span></button><div class="project-meta"><span>${String(i+1).padStart(2,'0')} / ${p.en}</span><span>${p.label}</span></div><h3><button data-project="${p.id}">${p.title}<span aria-hidden="true">↗</span></button></h3><p>${p.description}</p></article>`).join('');
