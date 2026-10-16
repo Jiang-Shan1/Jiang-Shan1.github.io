@@ -6,6 +6,7 @@ const projects = [
  {id:'hamer',title:'HaMeR 模型手势识别',category:'vision',label:'视觉交互',en:'HAND POSE PERCEPTION',description:'基于 HaMeR 模型的手势识别实验，展示手部动作的视觉感知效果。',points:['模型对手部动作的识别表现','不同手势变化下的可视化结果']},
  {id:'wuji',title:'Wuji Hand 动作演示',category:'dexterity',label:'灵巧操作',en:'DEXTEROUS HAND',description:'记录 Wuji Hand 灵巧手的动作实验，展示手指姿态变化与动作执行。',points:['灵巧手的手指运动','不同动作状态下的姿态变化']},
  {id:'single',title:'单相机猜拳系统',category:'vision',label:'视觉交互',en:'SINGLE-CAMERA INTERACTION',description:'以猜拳为交互场景，展示单相机方案下的手势识别与系统响应。',points:['猜拳手势的视觉输入','单相机交互系统的运行效果']},
+ {id:'cube',title:'Wuji Hand 强化学习旋转魔方',category:'dexterity',label:'灵巧操作',en:'RL CUBE REORIENTATION',description:'基于开源 wuji-mjlab 的 PPO 强化学习魔方姿态重定向任务，展示 Wuji Hand 在仿真环境中对魔方进行在手旋转与姿态调整。',points:['PPO 强化学习的魔方姿态重定向任务','仿真环境中的在手旋转与控制策略演示']},
 ];
 const grid=document.querySelector('#project-grid');
 grid.innerHTML=projects.map((p,i)=>`<article class="project" data-category="${p.category}"><button class="project-media" data-project="${p.id}" aria-label="播放${p.title}演示"><img loading="lazy" src="assets/${p.id}.jpg" alt="${p.title}实验视频封面" width="800" height="500"><span class="play-small" aria-hidden="true">▶</span></button><div class="project-meta"><span>${String(i+1).padStart(2,'0')} / ${p.en}</span><span>${p.label}</span></div><h3><button data-project="${p.id}">${p.title}<span aria-hidden="true">↗</span></button></h3><p>${p.description}</p></article>`).join('');
@@ -17,6 +18,7 @@ document.querySelectorAll('[data-project]').forEach(button=>button.addEventListe
  document.querySelector('#dialog-category').textContent=p.label+' / 项目演示'+(['scope','gluing','competition'].includes(p.id)?' · 2 倍速':'');
  document.querySelector('#dialog-number').textContent=p.en;
  document.querySelector('#dialog-description').textContent=p.description;
+ document.querySelector('#dialog-source').hidden=p.id!=='cube';
  document.querySelector('#dialog-points').innerHTML=p.points.map(point=>`<li>${point}</li>`).join('');
  video.src=`assets/${p.id}${['scope','gluing','competition'].includes(p.id)?'-2x':''}.mp4`;video.poster=`assets/${p.id}.jpg`;
 
